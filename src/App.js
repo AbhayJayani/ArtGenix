@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageCard from './components/ImageCard';
 import ImageSearch from './components/ImageSearch';
-
+import Navbar from './components/Navbar';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -19,7 +19,10 @@ function App() {
   }, [term]);
 
   return (
-    <div className="container mx-auto">
+    <div>
+      <Navbar />
+      <div className="container mx-auto">
+      
       <ImageSearch searchText={(text) => setTerm(text)} />
 
       {!isLoading && images.length === 0 && <h1 className="text-5xl text-center mx-auto mt-32">No Images Found</h1> }
@@ -29,6 +32,7 @@ function App() {
           <ImageCard key={image.id} image={image} />
         ))}
       </div>}
+    </div>
     </div>
   );
 }
